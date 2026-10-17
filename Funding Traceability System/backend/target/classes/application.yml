@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  # context-path 保持根，不设置
+
+spring:
+  datasource:
+    # 数据库连接，请按本机MySQL配置修改 username/password
+    url: ${DB_URL:jdbc:mysql://localhost:3306/funding_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+jwt:
+  secret: funding-traceability-secret-key-2024-very-long
+  expire: 86400000
+
+logging:
+  level:
+    com.funding: debug
